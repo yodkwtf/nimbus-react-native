@@ -248,3 +248,51 @@ export default ComponentName;
 ```
 
 Usually, it's best to do this before we export the component. Also, refer to documentation for the list of available props for each component.
+
+## Layout Props
+
+In React Native, we use Flexbox for layout. Flex 1 means that the component will take up all the available space. We can also use `flexDirection` to change the direction of the flexbox.
+
+```js
+const ComponentName = () => {
+  return (
+    <SafeAreaView style={styles.wrapper}>
+      <View style={styles.container}>
+        <Text>Component</Text>
+      </View>
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
+  container: {
+    backgroundColor: "dodgerblue",
+    flex: 1,
+  },
+});
+
+export default ComponentName;
+```
+
+> Note: No style values in React Native don't have units. So we don't need to use `px` or `rem`. They have a default unit of `dp` which is a device-independent pixel.
+
+## Using Icons
+
+There are a few ways to use icons in React Native. We are going to be using a library called `react-native-vector-icons` which comes pre-installed with Expo. However, it can also be installed separately.
+
+#### Get the Icon in your project
+
+- To get the list of icons, refer to [Expo Icons](icons.expo.fyi)
+- Find the icon you want to use and click on it
+- Follow the specified steps
+- Import the icon in your component
+  ```js
+  import { MaterialCommunityIcons } from "@expo/vector-icons";
+  ```
+- Use the icon in your component
+  ```js
+  <MaterialCommunityIcons name="email" size={100} color="dodgerblue" />
+  ```
