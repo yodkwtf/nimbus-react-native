@@ -296,3 +296,172 @@ There are a few ways to use icons in React Native. We are going to be using a li
   ```js
   <MaterialCommunityIcons name="email" size={100} color="dodgerblue" />
   ```
+
+## Lists in React Native
+
+- One of the most common and important components in mobile apps
+- 3 types of lists
+  - FlatList
+  - SectionList
+  - VirtualizedList
+- Most of the requirements are fulfilled by FlatList and SectionList
+
+#### FlatList vs SectionList
+
+- FlatList is used when we have a list of similar items
+- Standard list of items
+
+  ```md
+  - Apple
+  - Banana
+  - Orange
+  ```
+
+- SectionList is used when we have a collection of multiple list of items
+- A list broken up into multiple sections
+
+  ```md
+  Fruits
+
+  - Apple
+  - Banana
+  - Orange
+
+  Vegetables
+
+  - Potato
+  - Tomato
+  - Onion
+
+  Grains
+
+  - Rice
+  - Wheat
+  - Corn
+  ```
+
+### FlatList
+
+- Renders a list of items
+- 2 props are mandatory
+  - `data`: An array of data to be rendered
+  - `renderItem`: A function that returns the component to be rendered for each item
+- Has a bunch of other props that can be used to customize the list
+
+```js
+import { FlatList } from "react-native";
+
+const ComponentName = () => {
+  const data = ["Apple", "Banana", "Orange"];
+
+  return (
+    <SafeAreaView style={styles.wrapper}>
+      <FlatList data={data} renderItem={({ item }) => <Text>{item}</Text>} />
+    </SafeAreaView>
+  );
+};
+```
+
+- Can have an array of elements as well as objects as data
+- If component to render is complex, we can put it in a separate component and import it
+- We can also use the `keyExtractor` prop to specify the key for each item
+
+```js
+const data = [
+  { id: 1, name: "Apple" },
+  { id: 2, name: "Banana" },
+  { id: 3, name: "Orange" },
+];
+
+<FlatList
+  data={data}
+  renderItem={({ item }) => <ListItem title={item.name} />}
+  keyExtractor={(item) => item.id.toString()}
+/>;
+```
+
+### SectionList
+
+- Renders a list broken up into sections
+- 2 props are mandatory
+  - `sections`: An array of sections to be rendered
+  - `renderItem`: A function that returns the component to be rendered for each item
+- Has a bunch of other props that can be used to customize the list
+
+```js
+import { SectionList } from "react-native";
+
+const ComponentName = () => {
+  const data = [
+    {
+      title: "Fruits",
+      data: ["Apple", "Banana", "Orange"],
+    },
+    {
+      title: "Vegetables",
+      data: ["Potato", "Tomato", "Onion"],
+    },
+    {
+      title: "Grains",
+      data: ["Rice", "Wheat", "Corn"],
+    },
+  ];
+
+  return (
+    <SafeAreaView style={styles.wrapper}>
+      <SectionList
+        sections={data}
+        renderSectionHeader={({ section }) => <Text>{section.title}</Text>}
+        renderItem={({ item }) => <ListItem item={item} />}
+      />
+    </SafeAreaView>
+  );
+};
+```
+
+- Can only an array of objects as data
+
+### Key Extractor
+
+- Used to specify a unique key for each item
+- When working with lists, React needs to know which item has changed, been added, or been removed
+- Must be a string
+
+#### How keys are handled under the hood
+
+When an item is updated or deleted, React by instinct will rebuild the app. But if we have a key, React will only update the item that has changed. This helps in improving performance.
+
+### Some Other Props
+
+There are a bunch of other props that can be used to customize the list.
+
+#### `ItemSeparatorComponent`
+
+A component to render between each item just to make UI look better. It works similar to <hr> in HTML.
+
+```js
+<FlatList
+  data={data}
+  renderItem={({ item }) => <ListItem title={item.name} />}
+  keyExtractor={(item) => item.id.toString()}
+  ItemSeparatorComponent={() => <View style={styles.separator} />}
+/>
+```
+
+#### `ListEmptyComponent`
+
+A component to render when the list is empty.
+
+```js
+<FlatList
+  data={data}
+  renderItem={({ item }) => <ListItem title={item.name} />}
+  keyExtractor={(item) => item.id.toString()}
+  ItemSeparatorComponent={() => <View style={styles.separator} />}
+  ListEmptyComponent={() => <Text>No items to display</Text>}
+/>
+```
+
+There's tons to learn about lists. Refer to the documentation for more information.
+
+> Note: There's no need to worry about performance if the list isn't very long. FlatList and SectionList are optimized for performance. FlatList only renders the items that are visible on the screen. It only rerenders when the data changes.
