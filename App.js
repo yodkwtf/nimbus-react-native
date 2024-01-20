@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 // import CurrentWeather from "./src/screens/CurrentWeather";
 // import UpcomingWeather from "./src/screens/UpcomingWeather";
-import City from "./src/components/City";
+import City from "./src/screens/City";
 // import OurChild from "./src/components/OurChild";
 
 const App = () => {
