@@ -87,7 +87,7 @@ We can also create a custom setup for our app using React Native CLI. However, t
   npm i --save-dev --save-exact prettier
   ```
 - Create a `.prettierrc.js` file and add the following code
-  ```js
+  ```jsx
   module.exports = {
     bracketSpacing: true,
     jsxBracketSameLine: false,
@@ -105,7 +105,7 @@ We can find out more about setting up these configurations files via their docum
 
 - Install the ESLint and Prettier extension in your code editor
 - Add the following code to the `settings.json` file if needed
-  ```json
+  ```jsxon
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
@@ -116,7 +116,7 @@ We can find out more about setting up these configurations files via their docum
 #### Script to Run ESLint
 
 - Open the `package.json` file and add the following script
-  ```json
+  ```jsxon
   "scripts": {
     "lint": "eslint ."
   }
@@ -156,14 +156,14 @@ Just like `<div>` in HTML and hence it's only visible when it has some content o
 
 For every new component, first import React and then import the required core components from React Native.
 
-```js
+```jsx
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 ```
 
 There are a lot of ways to create a component. We can use a function or a class. We will be using Functional Components for now.
 
-```js
+```jsx
 const ComponentName = () => {
   return (
     <View>
@@ -175,13 +175,13 @@ const ComponentName = () => {
 
 Make sure to export the component.
 
-```js
+```jsx
 export default ComponentName;
 ```
 
 If we render this right now, it'll be hitting the borders of the screen. We can't just fix this by adding a margin to the component since it'll be different for different devices. So we need to use another component called `<SafeAreaView>`.
 
-```js
+```jsx
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 
 const ComponentName = () => {
@@ -207,7 +207,7 @@ There are a bunch of different ways to apply style but et's start with -
 
 Here we pass a style object to the `style` prop of the component.
 
-```js
+```jsx
 const ComponentName = () => {
   return (
     <SafeAreaView>
@@ -223,7 +223,7 @@ const ComponentName = () => {
 
 Here we create a StyleSheet object and pass it to the `style` prop of the component.
 
-```js
+```jsx
 import { StyleSheet } from "react-native";
 
 const ComponentName = () => {
@@ -253,7 +253,7 @@ Usually, it's best to do this before we export the component. Also, refer to doc
 
 In React Native, we use Flexbox for layout. Flex 1 means that the component will take up all the available space. We can also use `flexDirection` to change the direction of the flexbox.
 
-```js
+```jsx
 const ComponentName = () => {
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -278,24 +278,6 @@ export default ComponentName;
 ```
 
 > Note: No style values in React Native don't have units. So we don't need to use `px` or `rem`. They have a default unit of `dp` which is a device-independent pixel.
-
-## Using Icons
-
-There are a few ways to use icons in React Native. We are going to be using a library called `react-native-vector-icons` which comes pre-installed with Expo. However, it can also be installed separately.
-
-#### Get the Icon in your project
-
-- To get the list of icons, refer to [Expo Icons](icons.expo.fyi)
-- Find the icon you want to use and click on it
-- Follow the specified steps
-- Import the icon in your component
-  ```js
-  import { MaterialCommunityIcons } from "@expo/vector-icons";
-  ```
-- Use the icon in your component
-  ```js
-  <MaterialCommunityIcons name="email" size={100} color="dodgerblue" />
-  ```
 
 ## Lists in React Native
 
@@ -348,7 +330,7 @@ There are a few ways to use icons in React Native. We are going to be using a li
   - `renderItem`: A function that returns the component to be rendered for each item
 - Has a bunch of other props that can be used to customize the list
 
-```js
+```jsx
 import { FlatList } from "react-native";
 
 const ComponentName = () => {
@@ -366,7 +348,7 @@ const ComponentName = () => {
 - If component to render is complex, we can put it in a separate component and import it
 - We can also use the `keyExtractor` prop to specify the key for each item
 
-```js
+```jsx
 const data = [
   { id: 1, name: "Apple" },
   { id: 2, name: "Banana" },
@@ -388,7 +370,7 @@ const data = [
   - `renderItem`: A function that returns the component to be rendered for each item
 - Has a bunch of other props that can be used to customize the list
 
-```js
+```jsx
 import { SectionList } from "react-native";
 
 const ComponentName = () => {
@@ -437,9 +419,9 @@ There are a bunch of other props that can be used to customize the list.
 
 #### `ItemSeparatorComponent`
 
-A component to render between each item just to make UI look better. It works similar to <hr> in HTML.
+A component to render between each item just to make UI look better. It works similar to \<hr> in HTML.
 
-```js
+```jsx
 <FlatList
   data={data}
   renderItem={({ item }) => <ListItem title={item.name} />}
@@ -452,7 +434,7 @@ A component to render between each item just to make UI look better. It works si
 
 A component to render when the list is empty.
 
-```js
+```jsx
 <FlatList
   data={data}
   renderItem={({ item }) => <ListItem title={item.name} />}
@@ -465,3 +447,72 @@ A component to render when the list is empty.
 There's tons to learn about lists. Refer to the documentation for more information.
 
 > Note: There's no need to worry about performance if the list isn't very long. FlatList and SectionList are optimized for performance. FlatList only renders the items that are visible on the screen. It only rerenders when the data changes.
+
+## Icons in React Native
+
+There are a few ways to use icons in React Native. We are going to be using a library called `react-native-vector-icons` which comes pre-installed with Expo. However, it can also be installed separately.
+
+#### Get the Icon in your project
+
+- To get the list of icons, refer to [Expo Icons](icons.expo.fyi)
+- Find the icon you want to use and click on it
+- Follow the specified steps
+- Import the icon in your component
+  ```jsx
+  import { MaterialCommunityIcons } from "@expo/vector-icons";
+  ```
+- Use the icon in your component
+  ```jsx
+  <MaterialCommunityIcons name="email" size={100} color="dodgerblue" />
+  ```
+
+## Images
+
+We have a few different ways to work with images. For example, local or network images.
+
+### Local Images
+
+- We can import images from our project
+- We used to use `require()` but now we can use `import`
+- We can use the `source` prop to specify the image like we used `src` in HTML
+
+```jsx
+import { Image } from "react-native";
+
+const ComponentName = () => {
+  return (
+    <SafeAreaView style={styles.wrapper}>
+      <Image source={require("./assets/icon.png")} />
+    </SafeAreaView>
+  );
+};
+```
+
+### Network Images
+
+- Used when we want to display images from the internet
+- We can use the `source` prop to specify the image url
+
+```jsx
+import { Image } from "react-native";
+
+const ComponentName = () => {
+  return (
+    <SafeAreaView style={styles.wrapper}>
+      <Image
+        source={{
+          uri: "https://picsum.photos/200/300",
+        }}
+      />
+    </SafeAreaView>
+  );
+};
+```
+
+#### Gotchas
+
+- Network images must have a height set
+- When sizing images, use height and width props or aspectRatio with a defined width/height
+- Be mindful of storage sizes when using static images
+
+> Not: If you see images with file names like `@2x` or `@3x`, it means that the image is optimized for different screen sizes. The `@2x` image is for retina displays and the `@3x` image is for high-resolution displays.
