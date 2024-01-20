@@ -556,10 +556,93 @@ Every core component in React Native has a bunch of props that can be used to cu
 - Use unidirectional data flow to pass data from parent to child components
 - Unidirectional data flow means that data flows in one direction from parent to child components
 
-## Folder Structure
+## Code and Folder Structure
 
 - Always advisable to create a decent folder structure
 - Can have a folder called screens for all the viewable screens
 - Can have a folder called components for all the components
 
 > Note: Every time you move a file or folder within different directories, make sure to check the imports and update them accordingly.
+
+- Always try to use one component per file although it's not compulsory
+- Use destructuring to get the styles when there are a lot of styles
+
+```jsx
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "dodgerblue",
+    flex: 1,
+  },
+
+  text: {
+    color: "white",
+    fontSize: 20,
+  },
+});
+
+const { container, text } = styles;
+
+<View style={container}>
+  <Text style={text}>Component</Text>
+</View>;
+```
+
+## Passing Multiple Styles
+
+- We can pass multiple styles to a component
+- We can pass an array of styles to the `style` prop of the component
+
+```jsx
+<View style={[styles.container, { backgroundColor: "tomato" }]}>
+  <Text style={[styles.text, styles.titleText]}>Title</Text>
+  <Text style={[styles.text, styles.subtitleText]}>Subtitle</Text>
+</View>;
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "dodgerblue",
+    flex: 1,
+  },
+
+  text: {
+    color: "white",
+    fontSize: 20,
+  },
+
+  titleText: {
+    fontWeight: "bolder",
+  },
+
+  subtitleText: {
+    fontWeight: "bold",
+  },
+});
+```
+
+This is done to avoid writing the same styles again and again. Otherwise, we would have to write the same styles for each component which is not a good practice.
+
+```jsx
+<View style={styles.container}>
+  <Text style={styles.titleText}>Title</Text>
+  <Text style={styles.subtitleText}>Subtitle</Text>
+</View>;
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "dodgerblue",
+    flex: 1,
+  },
+
+  titleText: {
+    color: "white",
+    fontSize: 20,
+    fontWeight: "bolder",
+  },
+
+  subtitleText: {
+    color: "white",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+});
+```
