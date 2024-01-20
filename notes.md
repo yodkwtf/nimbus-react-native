@@ -551,3 +551,15 @@ Every core component in React Native has a bunch of props that can be used to cu
 ```jsx
 <Text numberOfLines={1}>This is a very long text</Text>
 ```
+
+- Props are immutable and cannot be changed once the component is rendered
+- Use unidirectional data flow to pass data from parent to child components
+- Unidirectional data flow means that data flows in one direction from parent to child components
+
+## Folder Structure
+
+- Always advisable to create a decent folder structure
+- Can have a folder called screens for all the viewable screens
+- Can have a folder called components for all the components
+
+> Note: Every time you move a file or folder within different directories, make sure to check the imports and update them accordingly.
