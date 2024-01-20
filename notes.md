@@ -473,7 +473,7 @@ We have a few different ways to work with images. For example, local or network 
 ### Local Images
 
 - We can import images from our project
-- We used to use `require()` but now we can use `import`
+- We use `require()` to import images
 - We can use the `source` prop to specify the image like we used `src` in HTML
 
 ```jsx
@@ -516,3 +516,38 @@ const ComponentName = () => {
 - Be mindful of storage sizes when using static images
 
 > Not: If you see images with file names like `@2x` or `@3x`, it means that the image is optimized for different screen sizes. The `@2x` image is for retina displays and the `@3x` image is for high-resolution displays.
+
+### `ImageBackground` Component
+
+- Used to display an image as the background of a component
+- We can add any children components inside the `ImageBackground` component
+
+```jsx
+import { ImageBackground } from "react-native";
+
+const ComponentName = () => {
+  return (
+    <SafeAreaView style={styles.wrapper}>
+      <ImageBackground
+        source={require("./assets/icon.png")}
+        style={styles.image}
+      >
+        <Text>Inside</Text>
+      </ImageBackground>
+    </SafeAreaView>
+  );
+};
+```
+
+## Props
+
+- Props are used to pass data from one component to another
+- Short for properties
+- Used to customize components
+- Promotes component reuse based on different data
+
+Every core component in React Native has a bunch of props that can be used to customize the component. For example, the `Text` component has a `numberOfLines` prop that can be used to specify the number of lines to show.
+
+```jsx
+<Text numberOfLines={1}>This is a very long text</Text>
+```
