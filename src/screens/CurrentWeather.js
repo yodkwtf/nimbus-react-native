@@ -1,25 +1,44 @@
-import React from "react";
-import { SafeAreaView, Text, View, StyleSheet } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import React from 'react';
+import { SafeAreaView, Text, View, StyleSheet } from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import RowText from '../components/RowText';
 
 const CurrentWeather = () => {
+  const {
+    wrapper,
+    container,
+    temp,
+    feels,
+    highLow,
+    highLowWrapper,
+    bodyWrapper,
+    description,
+    message,
+  } = styles;
+
   return (
-    <SafeAreaView style={styles.wrapper}>
-      <View style={styles.container}>
+    <SafeAreaView style={wrapper}>
+      <View style={container}>
         <Feather name="sun" size={100} color="black" />
-        <Text style={styles.temp}>6</Text>
-        <Text style={styles.feels}>Feels like 5</Text>
+        <Text style={temp}>6</Text>
+        <Text style={feels}>Feels like 5</Text>
 
-        <View style={styles.highLowWrapper}>
-          <Text style={styles.highLow}>Highest: 8</Text>
-          <Text style={styles.highLow}>Lowest: 6</Text>
-        </View>
+        <RowText
+          containerStyles={highLowWrapper}
+          messageOneStyles={highLow}
+          messageTwoStyles={highLow}
+          messageOne="Highest: 8"
+          messageTwo="Lowest: 6"
+        />
       </View>
 
-      <View style={styles.bodyWrapper}>
-        <Text style={styles.description}>Its Sunny</Text>
-        <Text style={styles.message}>Its perfect t-shirt weather</Text>
-      </View>
+      <RowText
+        containerStyles={bodyWrapper}
+        messageOneStyles={description}
+        messageTwoStyles={message}
+        messageOne="Humidity: 10%"
+        messageTwo="Wind: 10km/h"
+      />
     </SafeAreaView>
   );
 };
@@ -27,31 +46,31 @@ const CurrentWeather = () => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: "yellow",
+    backgroundColor: 'yellow',
   },
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   temp: {
-    color: "black",
+    color: 'black',
     fontSize: 48,
   },
   feels: {
-    color: "black",
+    color: 'black',
     fontSize: 30,
   },
   highLow: {
-    color: "black",
+    color: 'black',
     fontSize: 20,
   },
   highLowWrapper: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   bodyWrapper: {
-    justifyContent: "flex-end",
-    alignItems: "flex-start",
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
     paddingLeft: 25,
     marginBottom: 40,
   },
