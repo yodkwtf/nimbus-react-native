@@ -974,3 +974,45 @@ We can use any external library to get the user's location. However, we are goin
     "timestamp": 1631533200000
   }
   ```
+
+## Environment Variables
+
+Environment variables are used to store sensitive information like API keys, database URLs, etc. We can use a package called `react-native-dotenv` to use environment variables in our app.
+
+- Install the required package
+
+  ```sh
+  npm install -D react-native-dotenv
+  ```
+
+- Add the required configuration to the `babel.config.js`
+
+  ```js
+  module.exports = function (api) {
+    api.cache(true);
+    return {
+      presets: ['babel-preset-expo'],
+      plugins: ['module:react-native-dotenv'], // Add this line
+    };
+  };
+  ```
+
+- Create a `.env` file in the root of the project
+
+  ```sh
+  API_KEY=<some-secret-api-key>
+  ```
+
+- Use the environment variable in the app
+
+  ```jsx
+  import { API_KEY } from '@env';
+
+  console.log(API_KEY);
+  ```
+
+- Add the `.env` file to the `.gitignore` file
+
+  ```sh
+  .env
+  ```
