@@ -919,3 +919,58 @@ const ComponentName = () => {
   return <ActivityIndicator size="large" color="dodgerblue" />;
 };
 ```
+
+## GeoLocation
+
+We can use any external library to get the user's location. However, we are going to be using the `expo-location` library which comes pre-installed with Expo.
+
+- Install the required package
+
+  ```sh
+  npx expo install expo-location
+  ```
+
+- Import the required module
+
+  ```jsx
+  import * as Location from 'expo-location';
+  ```
+
+- Ask for permission to access the user's location
+
+  ```jsx
+  const getLocation = async () => {
+    const { status } = await Location.requestForegroundPermissionsAsync();
+
+    if (status !== 'granted') {
+      console.log('Permission denied');
+      return;
+    }
+  };
+  ```
+
+- Use the `getCurrentPositionAsync` method to get the user's location
+
+  ```jsx
+  const getLocation = async () => {
+    const location = await Location.getCurrentPositionAsync();
+    console.log(location);
+  };
+  ```
+
+- The `getCurrentPositionAsync` method returns an object with the user's location
+
+  ```json
+  {
+    "coords": {
+      "latitude": 37.785834,
+      "longitude": -122.406417,
+      "altitude": 0,
+      "accuracy": 65,
+      "altitudeAccuracy": -1,
+      "heading": -1,
+      "speed": -1
+    },
+    "timestamp": 1631533200000
+  }
+  ```
