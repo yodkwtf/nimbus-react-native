@@ -789,3 +789,59 @@ Here are a few examples -
     />
   </Tab.Navigator>;
   ```
+
+## State
+
+- An object that contains information about the component
+- When the state of the component changes, the component re-renders
+- State allows us to track the information about the component and do things based on that information
+
+For example, let's say we have a state called `showButton`. If the value of `showButton` is `true`, we can show a button. If the value of `showButton` is `false`, we can hide the button. It's as simple as that.
+
+```jsx
+let showButton = true;
+
+<div>{showButton && <Button />}</div>;
+```
+
+#### Props vs State
+
+**Props** - Let us pass data from parent to child components
+
+**State** - Let us internally manage data within a component
+
+If our app grows, we can use a state management library like Redux or MobX.
+
+### The `useState` Hook
+
+- A hook that lets us add state to functional components
+- It returns an array with 2 elements - the current state and a function that lets us update the state
+
+  ```jsx
+  const [count, setCount] = useState(0);
+  ```
+
+- When using `useState`, we pass the initial value of the state that is used for initial render of the component
+- Initial state can be a number, string, boolean, object, or array
+- We can use the `setState` function to update the state and when the state changes, the component re-renders
+- We can also use the `useState` hook multiple times to add multiple states to a component
+
+Here's an example of how we can use the `useState` hook to create a simple counter.
+
+```jsx
+import React, { useState } from 'react';
+import { View, Text, Button } from 'react-native';
+
+const ComponentName = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <View>
+      <Text>{count}</Text>
+      <Button title="Increase" onPress={() => setCount(count + 1)} />
+      <Button title="Reset" onPress={() => setCount(0)} />
+      <Button title="Decrease" onPress={() => setCount(count - 1)} />
+    </View>
+  );
+};
+```
