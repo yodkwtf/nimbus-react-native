@@ -905,3 +905,17 @@ useEffect(() => {
 ```
 
 This isn't needed for every effect but it's useful when we need to clean up something like a subscription or a timer.
+
+## Activity Indicator
+
+- A component used to show a loading indicator
+- It's a spinner that shows that something is happening
+- Can be customized using the `size` and `color` props
+
+```jsx
+import { ActivityIndicator } from 'react-native';
+
+const ComponentName = () => {
+  return <ActivityIndicator size="large" color="dodgerblue" />;
+};
+```
