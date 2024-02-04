@@ -845,3 +845,63 @@ const ComponentName = () => {
   );
 };
 ```
+
+### The `useEffect` Hook
+
+- A hook that lets us perform side effects in functional components
+- Side effects are things like data fetching, subscriptions, or manually changing the DOM
+- By default, it runs after every render of the component but we can also specify when it should run
+
+  ```jsx
+  useEffect(() => {
+    // Side effect
+  }, [dependency]);
+  ```
+
+- The second argument is an array of dependencies
+- If the dependencies change, the effect runs
+- If the dependencies don't change, the effect doesn't run
+
+Here's an example of how we can use the `useEffect` hook to perform a side effect.
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import { View, Text, Button } from 'react-native';
+
+const ComponentName = () => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log('Effect');
+  }, [count]);
+
+  return (
+    <View>
+      <Text>{count}</Text>
+      <Button title="Increase" onPress={() => setCount(count + 1)} />
+      <Button title="Reset" onPress={() => setCount(0)} />
+      <Button title="Decrease" onPress={() => setCount(count - 1)} />
+    </View>
+  );
+};
+```
+
+Here, the `useEffect` hook runs after every render of the component. If the value of `count` changes, the effect runs. If the value of `count` doesn't change, the effect doesn't run.
+
+#### Cleanup Function
+
+- We can also return a function from the `useEffect` hook
+- This function is used to clean up the effect
+- It runs before the effect runs next time or when the component is unmounted
+
+```jsx
+useEffect(() => {
+  console.log('Effect');
+
+  return () => {
+    console.log('Cleanup');
+  };
+}, [count]);
+```
+
+This isn't needed for every effect but it's useful when we need to clean up something like a subscription or a timer.
