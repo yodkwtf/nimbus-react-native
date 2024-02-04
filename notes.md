@@ -1016,3 +1016,38 @@ Environment variables are used to store sensitive information like API keys, dat
   ```sh
   .env
   ```
+
+## Data Fetching
+
+We can use the `fetch` API to fetch data from an API.
+
+```jsx
+const getData = async () => {
+  try {
+    const response = await fetch('https://api.example.com/data');
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+```
+
+We can also use the `axios` library to fetch data from an API.
+
+- Install the required package
+
+  ```sh
+  npm install axios
+  ```
+
+- Use the `axios` library to fetch data from an API
+
+  ```jsx
+  import axios from 'axios';
+
+  const getData = async () => {
+    const response = await axios.get('https://api.example.com/data');
+    console.log(response.data);
+  };
+  ```
