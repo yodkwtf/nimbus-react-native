@@ -719,3 +719,73 @@ You can use any of these types of navigation based on your requirements. We are 
     );
   };
   ```
+
+- Add the required screens
+
+  ```jsx
+  import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+  const Tab = createBottomTabNavigator();
+
+  const App = () => {
+    return (
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen name="Weather" component={WeatherScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    );
+  };
+  ```
+
+Here **name** is the text that will show up on the tab button and **component** is the component to be rendered when the tab button is clicked.
+
+This sets up a basic navigation in our app. We can also customize the navigation based on our requirements.
+
+#### Customizing Tab Navigation
+
+There are a bunch of different props that can be used to customize the tab navigation. Use the react native documentation for more information.
+
+Here are a few examples -
+
+- Active and Inactive Colors
+
+  ```jsx
+  <Tab.Navigator
+    screenOptions={{
+      tabBarActiveTintColor: 'tomato',
+      tabBarInactiveTintColor: 'gray',
+    }}
+  >
+    <Tab.Screen name="Home" component={HomeScreen} />
+    <Tab.Screen name="Weather" component={WeatherScreen} />
+  </Tab.Navigator>
+  ```
+
+- Tab Bar Icons
+
+  ```jsx
+  import { Feather } from '@expo/vector-icons';
+
+  <Tab.Navigator>
+    <Tab.Screen
+      name="Home"
+      component={HomeScreen}
+      options={{
+        tabBarIcon: ({ focused }) => (
+          <Feather name="home" color={focused ? 'tomato' : 'black'} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="Weather"
+      component={WeatherScreen}
+      options={{
+        tabBarIcon: ({ focused }) => (
+          <Feather name="droplet" color={focused ? 'tomato' : 'black'} />
+        ),
+      }}
+    />
+  </Tab.Navigator>;
+  ```
