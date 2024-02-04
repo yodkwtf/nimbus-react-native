@@ -95,7 +95,7 @@ We can also create a custom setup for our app using React Native CLI. However, t
     singleQuote: true,
     tabWidth: 2,
     useTabs: false,
-    trailingComma: "none",
+    trailingComma: 'none',
   };
   ```
 
@@ -157,8 +157,8 @@ Just like `<div>` in HTML and hence it's only visible when it has some content o
 For every new component, first import React and then import the required core components from React Native.
 
 ```jsx
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 ```
 
 There are a lot of ways to create a component. We can use a function or a class. We will be using Functional Components for now.
@@ -182,7 +182,7 @@ export default ComponentName;
 If we render this right now, it'll be hitting the borders of the screen. We can't just fix this by adding a margin to the component since it'll be different for different devices. So we need to use another component called `<SafeAreaView>`.
 
 ```jsx
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 
 const ComponentName = () => {
   return (
@@ -211,7 +211,7 @@ Here we pass a style object to the `style` prop of the component.
 const ComponentName = () => {
   return (
     <SafeAreaView>
-      <View style={{ backgroundColor: "dodgerblue", height: 100, width: 100 }}>
+      <View style={{ backgroundColor: 'dodgerblue', height: 100, width: 100 }}>
         <Text>Component</Text>
       </View>
     </SafeAreaView>
@@ -224,7 +224,7 @@ const ComponentName = () => {
 Here we create a StyleSheet object and pass it to the `style` prop of the component.
 
 ```jsx
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const ComponentName = () => {
   return (
@@ -238,7 +238,7 @@ const ComponentName = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "dodgerblue",
+    backgroundColor: 'dodgerblue',
     height: 100,
     width: 100,
   },
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    backgroundColor: "dodgerblue",
+    backgroundColor: 'dodgerblue',
     flex: 1,
   },
 });
@@ -331,10 +331,10 @@ export default ComponentName;
 - Has a bunch of other props that can be used to customize the list
 
 ```jsx
-import { FlatList } from "react-native";
+import { FlatList } from 'react-native';
 
 const ComponentName = () => {
-  const data = ["Apple", "Banana", "Orange"];
+  const data = ['Apple', 'Banana', 'Orange'];
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -350,9 +350,9 @@ const ComponentName = () => {
 
 ```jsx
 const data = [
-  { id: 1, name: "Apple" },
-  { id: 2, name: "Banana" },
-  { id: 3, name: "Orange" },
+  { id: 1, name: 'Apple' },
+  { id: 2, name: 'Banana' },
+  { id: 3, name: 'Orange' },
 ];
 
 <FlatList
@@ -371,21 +371,21 @@ const data = [
 - Has a bunch of other props that can be used to customize the list
 
 ```jsx
-import { SectionList } from "react-native";
+import { SectionList } from 'react-native';
 
 const ComponentName = () => {
   const data = [
     {
-      title: "Fruits",
-      data: ["Apple", "Banana", "Orange"],
+      title: 'Fruits',
+      data: ['Apple', 'Banana', 'Orange'],
     },
     {
-      title: "Vegetables",
-      data: ["Potato", "Tomato", "Onion"],
+      title: 'Vegetables',
+      data: ['Potato', 'Tomato', 'Onion'],
     },
     {
-      title: "Grains",
-      data: ["Rice", "Wheat", "Corn"],
+      title: 'Grains',
+      data: ['Rice', 'Wheat', 'Corn'],
     },
   ];
 
@@ -459,7 +459,7 @@ There are a few ways to use icons in React Native. We are going to be using a li
 - Follow the specified steps
 - Import the icon in your component
   ```jsx
-  import { MaterialCommunityIcons } from "@expo/vector-icons";
+  import { MaterialCommunityIcons } from '@expo/vector-icons';
   ```
 - Use the icon in your component
   ```jsx
@@ -477,12 +477,12 @@ We have a few different ways to work with images. For example, local or network 
 - We can use the `source` prop to specify the image like we used `src` in HTML
 
 ```jsx
-import { Image } from "react-native";
+import { Image } from 'react-native';
 
 const ComponentName = () => {
   return (
     <SafeAreaView style={styles.wrapper}>
-      <Image source={require("./assets/icon.png")} />
+      <Image source={require('./assets/icon.png')} />
     </SafeAreaView>
   );
 };
@@ -494,14 +494,14 @@ const ComponentName = () => {
 - We can use the `source` prop to specify the image url
 
 ```jsx
-import { Image } from "react-native";
+import { Image } from 'react-native';
 
 const ComponentName = () => {
   return (
     <SafeAreaView style={styles.wrapper}>
       <Image
         source={{
-          uri: "https://picsum.photos/200/300",
+          uri: 'https://picsum.photos/200/300',
         }}
       />
     </SafeAreaView>
@@ -523,13 +523,13 @@ const ComponentName = () => {
 - We can add any children components inside the `ImageBackground` component
 
 ```jsx
-import { ImageBackground } from "react-native";
+import { ImageBackground } from 'react-native';
 
 const ComponentName = () => {
   return (
     <SafeAreaView style={styles.wrapper}>
       <ImageBackground
-        source={require("./assets/icon.png")}
+        source={require('./assets/icon.png')}
         style={styles.image}
       >
         <Text>Inside</Text>
@@ -570,12 +570,12 @@ Every core component in React Native has a bunch of props that can be used to cu
 ```jsx
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "dodgerblue",
+    backgroundColor: 'dodgerblue',
     flex: 1,
   },
 
   text: {
-    color: "white",
+    color: 'white',
     fontSize: 20,
   },
 });
@@ -593,28 +593,28 @@ const { container, text } = styles;
 - We can pass an array of styles to the `style` prop of the component
 
 ```jsx
-<View style={[styles.container, { backgroundColor: "tomato" }]}>
+<View style={[styles.container, { backgroundColor: 'tomato' }]}>
   <Text style={[styles.text, styles.titleText]}>Title</Text>
   <Text style={[styles.text, styles.subtitleText]}>Subtitle</Text>
 </View>;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "dodgerblue",
+    backgroundColor: 'dodgerblue',
     flex: 1,
   },
 
   text: {
-    color: "white",
+    color: 'white',
     fontSize: 20,
   },
 
   titleText: {
-    fontWeight: "bolder",
+    fontWeight: 'bolder',
   },
 
   subtitleText: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });
 ```
@@ -629,20 +629,93 @@ This is done to avoid writing the same styles again and again. Otherwise, we wou
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "dodgerblue",
+    backgroundColor: 'dodgerblue',
     flex: 1,
   },
 
   titleText: {
-    color: "white",
+    color: 'white',
     fontSize: 20,
-    fontWeight: "bolder",
+    fontWeight: 'bolder',
   },
 
   subtitleText: {
-    color: "white",
+    color: 'white',
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });
 ```
+
+## Navigation in React Native
+
+In React Native, there's no built-in navigation system. We can use external libraries to handle navigation in our app. The 2 of the most popular libraries are -
+
+1. React Navigation (Well integrated with Expo)
+2. React Native Navigation (Not integrated with Expo)
+
+### React Navigation
+
+- Install the required packages
+
+  ```sh
+  npm install @react-navigation/native
+  ```
+
+- Install the required expo dependencies
+
+  ```sh
+  npx expo install react-native-screens react-native-safe-area-context
+  ```
+
+- Wrap the app with the `NavigationContainer` component to enable navigation
+
+  ```jsx
+  import { NavigationContainer } from '@react-navigation/native';
+
+  const App = () => {
+    return (
+      <NavigationContainer>
+        <HomeScreen />
+      </NavigationContainer>
+    );
+  };
+  ```
+
+#### Types of Navigation
+
+There are a few different types of navigation. For example, Stack, Tab, Drawer, etc.
+
+- **Stack Navigation:** Used to navigate between different screens by stacking them on top of each other
+- **Tab Navigation:** Used to navigate between different screens using tabs at the top or bottom of the screen
+- **Drawer Navigation:** Used to navigate between different screens using a drawer that slides in from the left
+
+You can use any of these types of navigation based on your requirements. We are going to be using Tab Navigation for now.
+
+### Install Tab Navigation
+
+- Install the required packages
+
+  ```sh
+  npm install @react-navigation/bottom-tabs
+  ```
+
+- Wrap the app with Tab Navigation
+
+  ```jsx
+  import { NavigationContainer } from '@react-navigation/native';
+  import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+  const Tab = createBottomTabNavigator();
+
+  const App = () => {
+    return (
+      <NavigationContainer>
+        <Tab.Navigator>
+          <HomeScreen />
+          <WeatherScreen />
+        </Tab.Navigator>
+      </NavigationContainer>
+    );
+  };
+  ```
