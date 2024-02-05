@@ -1067,3 +1067,100 @@ Or we can also do it like this -
 ```jsx
 <Tab.Screen name="Home">{() => <HomeScreen data={data} />}</Tab.Screen>
 ```
+
+## Context API
+
+It's a way to pass data down the component tree without having to pass props down manually at every level. It can pe pretty useful when we have a lot of nested components that need to access the same data.
+
+To use the Context API, we need to create a context and then use the `Provider` and `Consumer` components to provide and consume the data.
+
+- Create a context
+
+  ```jsx
+  import { createContext } from 'react';
+
+  const DataContext = createContext();
+
+  export default DataContext;
+  ```
+
+- Wrap the app with the `Provider` component
+
+  ```jsx
+  import DataContext from './DataContext';
+
+  const App = () => {
+    return (
+      <DataContext.Provider value={{ data: 'Hello' }}>
+        <HomeScreen />
+      </DataContext.Provider>
+    );
+  };
+  ```
+
+- Consume the data using the `useContext` hook
+
+  ```jsx
+  import DataContext from './DataContext';
+
+  const HomeScreen = () => {
+    const { data } = useContext(DataContext);
+
+    return <Text>{data}</Text>;
+  };
+  ```
+
+While Context API is useful, it doesn't mean that we should use it everywhere. The use case depends on the requirements of the app.
+
+## Buttons in React Native
+
+There are a few different ways to create buttons in React Native. We can use the `Button` component, the `TouchableOpacity` component, or the `TouchableWithoutFeedback` component.
+
+### The `Button` Component
+
+- A built-in component used to create a button
+- It's a simple button that can be used to perform an action when clicked
+
+```jsx
+import { Button } from 'react-native';
+
+const ComponentName = () => {
+  return (
+    <Button title="Press Me" onPress={() => console.log('Button Pressed')} />
+  );
+};
+```
+
+### The `TouchableOpacity` Component
+
+- A built-in component used to create a button
+- It's similar to the `Button` component but it's more customizable
+
+```jsx
+import { TouchableOpacity, Text } from 'react-native';
+
+const ComponentName = () => {
+  return (
+    <TouchableOpacity onPress={() => console.log('Button Pressed')}>
+      <Text>Press Me</Text>
+    </TouchableOpacity>
+  );
+};
+```
+
+### The `TouchableWithoutFeedback` Component
+
+- A built-in component used to create a button
+- It's similar to the `TouchableOpacity` component but it doesn't have any visual feedback when pressed which means that it doesn't change color when pressed
+
+```jsx
+import { TouchableWithoutFeedback, Text } from 'react-native';
+
+const ComponentName = () => {
+  return (
+    <TouchableWithoutFeedback onPress={() => console.log('Button Pressed')}>
+      <Text>Press Me</Text>
+    </TouchableWithoutFeedback>
+  );
+};
+```
