@@ -22,18 +22,18 @@ const CurrentWeather = ({ weatherData }) => {
     main: { feels_like, temp, temp_max, temp_min },
     weather,
   } = weatherData;
-  const weatherCondition = weather[0].main;
+  const weatherCondition = weather[0]?.main;
 
   return (
     <SafeAreaView
       style={[
         wrapper,
-        { backgroundColor: weatherType[weatherCondition].backgroundColor },
+        { backgroundColor: weatherType[weatherCondition]?.backgroundColor },
       ]}
     >
       <View style={container}>
         <Feather
-          name={weatherType[weatherCondition].icon}
+          name={weatherType[weatherCondition]?.icon}
           size={100}
           color="white"
         />
@@ -53,8 +53,8 @@ const CurrentWeather = ({ weatherData }) => {
         containerStyles={bodyWrapper}
         messageOneStyles={description}
         messageTwoStyles={message}
-        messageOne={weather[0].description}
-        messageTwo={weatherType[weatherCondition].message}
+        messageOne={weather[0]?.description}
+        messageTwo={weatherType[weatherCondition]?.message}
       />
     </SafeAreaView>
   );
@@ -63,7 +63,6 @@ const CurrentWeather = ({ weatherData }) => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: 'yellow',
   },
   container: {
     flex: 1,
@@ -92,10 +91,10 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   description: {
-    fontSize: 48,
+    fontSize: 43,
   },
   message: {
-    fontSize: 30,
+    fontSize: 25,
   },
 });
 
