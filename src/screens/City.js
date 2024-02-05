@@ -8,8 +8,9 @@ import {
   StatusBar,
 } from 'react-native';
 import IconText from '../components/IconText';
+import { formatUTCDate } from '../utils/helper';
 
-const City = () => {
+const City = ({ weatherData }) => {
   const {
     container,
     imageLayout,
@@ -23,21 +24,23 @@ const City = () => {
     rowLayout,
   } = styles;
 
+  const { name, country, population, sunrise, sunset, timezone } = weatherData;
+
   return (
     <SafeAreaView style={container}>
       <ImageBackground
         source={require('../../assets/city-background.jpg')}
         style={imageLayout}
       >
-        <Text style={[cityName, cityText]}>London</Text>
-        <Text style={[countryName, cityText]}>UK</Text>
+        <Text style={[cityName, cityText]}>{name}</Text>
+        <Text style={[countryName, cityText]}>{country}</Text>
 
         <View style={[populationWrapper, rowLayout]}>
           <IconText
             iconName="user"
             iconColor="red"
             bodyTextStyles={populationText}
-            bodyText="8000"
+            bodyText={`Population: ${population}`}
           />
         </View>
 
@@ -46,14 +49,14 @@ const City = () => {
             iconName="sunrise"
             iconColor="white"
             bodyTextStyles={riseSetText}
-            bodyText="07:28:15 am"
+            bodyText={formatUTCDate(sunrise, timezone)}
           />
 
           <IconText
             iconName="sunset"
             iconColor="white"
             bodyTextStyles={riseSetText}
-            bodyText="17:28:15 pm"
+            bodyText={formatUTCDate(sunset, timezone)}
           />
         </View>
       </ImageBackground>
