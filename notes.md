@@ -1051,3 +1051,19 @@ We can also use the `axios` library to fetch data from an API.
     console.log(response.data);
   };
   ```
+
+## Passing Props to Tab Screens
+
+In order to pass props to the component, we need to render a callback function that returns the component.
+
+```jsx
+<Tab.Screen
+  name="Home"
+  component={() => <HomeScreen data={data} />}
+```
+
+Or we can also do it like this -
+
+```jsx
+<Tab.Screen name="Home">{() => <HomeScreen data={data} />}</Tab.Screen>
+```

@@ -31,7 +31,6 @@ const Tabs = ({ weather }) => {
     >
       <Tab.Screen
         name="Current"
-        component={CurrentWeather}
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
@@ -41,7 +40,9 @@ const Tabs = ({ weather }) => {
             />
           ),
         }}
-      />
+      >
+        {() => <CurrentWeather weatherData={weather.list[0]} />}
+      </Tab.Screen>
 
       <Tab.Screen
         name="Upcoming"
