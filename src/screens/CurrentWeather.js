@@ -44,8 +44,8 @@ const CurrentWeather = ({ weatherData }) => {
           containerStyles={highLowWrapper}
           messageOneStyles={highLow}
           messageTwoStyles={highLow}
-          messageOne={`Highest: ${temp_max}° `}
-          messageTwo={`Lowest: ${temp_min}°`}
+          messageOne={`Max: ${temp_max}° | `}
+          messageTwo={`Min: ${temp_min}°`}
         />
       </View>
 
@@ -72,10 +72,12 @@ const styles = StyleSheet.create({
   tempStyles: {
     color: 'black',
     fontSize: 48,
+    marginVertical: 10,
   },
   feels: {
     color: 'black',
     fontSize: 30,
+    marginVertical: 10,
   },
   highLow: {
     color: 'black',
@@ -86,15 +88,16 @@ const styles = StyleSheet.create({
   },
   bodyWrapper: {
     justifyContent: 'flex-end',
-    alignItems: 'flex-start',
-    paddingLeft: 25,
+    alignItems: 'center',
     marginBottom: 40,
   },
   description: {
-    fontSize: 43,
+    fontSize: 35,
+    textTransform: 'capitalize',
   },
   message: {
-    fontSize: 25,
+    marginTop: 10,
+    fontSize: 20,
   },
 });
 

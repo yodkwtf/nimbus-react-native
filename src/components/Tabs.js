@@ -14,18 +14,18 @@ const Tabs = ({ weather }) => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: 'tomato',
+        tabBarActiveTintColor: 'white',
         tabBarInactiveTintColor: 'gray',
         tabBarStyle: {
-          backgroundColor: 'lightblue',
+          backgroundColor: 'black',
         },
         headerStyle: {
-          backgroundColor: 'lightblue',
+          backgroundColor: 'black',
         },
         headerTitleStyle: {
           fontWeight: 'bold',
           fontSize: 25,
-          color: 'tomato',
+          color: 'white',
         },
       }}
     >
@@ -36,7 +36,7 @@ const Tabs = ({ weather }) => {
             <Feather
               name="droplet"
               size={25}
-              color={focused ? 'tomato' : 'black'}
+              color={focused ? 'white' : 'gray'}
             />
           ),
         }}
@@ -51,7 +51,7 @@ const Tabs = ({ weather }) => {
             <Feather
               name="clock"
               size={25}
-              color={focused ? 'tomato' : 'black'}
+              color={focused ? 'white' : 'gray'}
             />
           ),
         }}
@@ -63,11 +63,7 @@ const Tabs = ({ weather }) => {
         name="City"
         options={{
           tabBarIcon: ({ focused }) => (
-            <Feather
-              name="home"
-              size={25}
-              color={focused ? 'tomato' : 'black'}
-            />
+            <Feather name="home" size={25} color={focused ? 'white' : 'gray'} />
           ),
         }}
       >

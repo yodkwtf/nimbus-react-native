@@ -38,23 +38,27 @@ const City = ({ weatherData }) => {
         <View style={[populationWrapper, rowLayout]}>
           <IconText
             iconName="user"
-            iconColor="red"
+            iconColor="white"
             bodyTextStyles={populationText}
             bodyText={`Population: ${population}`}
           />
         </View>
 
         <View style={[riseSetWrapper, rowLayout]}>
+          <Text style={riseSetText}>Sunrise</Text>
           <IconText
             iconName="sunrise"
-            iconColor="white"
+            iconColor="black"
             bodyTextStyles={riseSetText}
             bodyText={formatUTCDate(sunrise, timezone)}
           />
+        </View>
 
+        <View style={[riseSetWrapper, rowLayout]}>
+          <Text style={riseSetText}>Sunrise</Text>
           <IconText
             iconName="sunset"
-            iconColor="white"
+            iconColor="black"
             bodyTextStyles={riseSetText}
             bodyText={formatUTCDate(sunset, timezone)}
           />
@@ -76,6 +80,7 @@ const styles = StyleSheet.create({
 
   cityName: {
     fontSize: 40,
+    paddingVertical: 10,
   },
 
   countryName: {
@@ -92,24 +97,28 @@ const styles = StyleSheet.create({
   populationWrapper: {
     justifyContent: 'center',
     marginTop: 30,
+    backgroundColor: 'black',
+    padding: 20,
   },
 
   populationText: {
     fontSize: 25,
     fontWeight: 'bold',
-    color: 'red',
+    color: 'white',
     marginLeft: 7.5,
   },
 
   riseSetWrapper: {
     justifyContent: 'space-around',
     marginTop: 30,
+    backgroundColor: 'white',
+    padding: 20,
   },
 
   riseSetText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'white',
+    color: 'black',
   },
 
   rowLayout: {
