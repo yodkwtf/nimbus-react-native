@@ -2,6 +2,10 @@
 
 Nimbus is a simple weather application built with React Native, serving as a learning project to get familiar with React Native basics and OpenWeather API integration.
 
+## Preview
+
+![Nimbus Weather App](./assets/preview.jpg)
+
 ## Features
 
 - **Current Weather:** View current weather conditions including temperature, humidity, wind speed, and more.
@@ -61,12 +65,3 @@ Contributions are welcome! Please create an issue or pull request if you would l
 - **Email:** [48durgesh.kumar@gmail.com](mailto:48durgesh.kumar@gmail.com)
 - **LinkedIn:** [Durgesh Kumar](https://www.linkedin.com/in/durgesh-chaudhary/)
 - **GitHub:** [@yodkwtf](https://github.com/yodkwtf)
-
-## ToDos
-
-- [x] Update colors and styles
-- [x] Add Nimbus branding
-- [x] Create documentation in the README
-- [ ] Convert notes into cheatsheet
-- [x] Save env to env repo
-- [ ] Add screenshots to README

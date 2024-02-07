@@ -10,20 +10,21 @@
 8. [Styling in React Native](#styling)
 9. [Passing Multiple Styles](#passing-multiple-styles)
 10. [Layout Props](#layout-props)
-11. [Lists in React Native](#lists-in-react-native)
-12. [Icons](#icons)
-13. [Images](#images)
-14. [Buttons in React Native](#buttons-in-react-native)
-15. [Activity Indicator](#activity-indicator)
-16. [GeoLocation](#geolocation)
-17. [Props](#props)
-18. [Navigation in React Native](#navigation-in-react-native)
-19. [Passing Props to Tab Screens](#passing-props-to-tab-screens)
-20. [State](#state)
-21. [Data Fetching](#data-fetching)
-22. [Context API](#context-api)
-23. [Environment Variables](#environment-variables)
-24. [Code and Folder Structure](#code-and-folder-structure)
+11. [Adding Fonts](#fonts-in-react-native)
+12. [Lists in React Native](#lists-in-react-native)
+13. [Icons](#icons)
+14. [Images](#images)
+15. [Buttons in React Native](#buttons-in-react-native)
+16. [Activity Indicator](#activity-indicator)
+17. [GeoLocation](#geolocation)
+18. [Props](#props)
+19. [Navigation in React Native](#navigation-in-react-native)
+20. [Passing Props to Tab Screens](#passing-props-to-tab-screens)
+21. [State](#state)
+22. [Data Fetching](#data-fetching)
+23. [Context API](#context-api)
+24. [Environment Variables](#environment-variables)
+25. [Code and Folder Structure](#code-and-folder-structure)
 
 ## What is React Native?
 
@@ -104,9 +105,11 @@ So instead of rendering HTML elements, you render Native mobile components.
 
 - Get the latest version of Node.js from [Download - Node.js](https://nodejs.org/en/)
 - Install Expo CLI using
+
   ```sh
   npm install -g expo-cli
   ```
+
 - Install Expo app on your phone from the App Store or Play Store
 - Move to the directory where you want to create your project
   ```sh
@@ -135,9 +138,11 @@ We can also create a custom setup for our app using React Native CLI. However, t
 #### Install a Linter
 
 - Get a linter to make sure our code is clean and consistent
+
   ```sh
   npm i eslint --save-dev # dev dependency
   ```
+
 - Setup eslint
   ```sh
   npx eslint --init
@@ -147,17 +152,21 @@ We can also create a custom setup for our app using React Native CLI. However, t
 #### Install React Native Community ESLint Config
 
 - Install the plugin
+
   ```sh
   npm i @react-native-community/eslint-config --save-dev
   ```
+
 - Add any additional rules to the `.eslintrc.js` file
 
 #### Install Prettier
 
 - Install prettier
+
   ```sh
   npm i --save-dev --save-exact prettier
   ```
+
 - Create a `.prettierrc.js` file and add the following code
   ```jsx
   module.exports = {
@@ -177,6 +186,7 @@ We can find out more about setting up these configurations files via their docum
 
 - Install the ESLint and Prettier extension in your code editor
 - Add the following code to the `settings.json` file if needed
+
   ```json
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
@@ -188,11 +198,13 @@ We can find out more about setting up these configurations files via their docum
 #### Script to Run ESLint
 
 - Open the `package.json` file and add the following script
+
   ```json
   "scripts": {
     "lint": "eslint ."
   }
   ```
+
 - Run the script
   ```sh
   npm run lint
@@ -1263,3 +1275,66 @@ To use the Context API, we need to create a context and then use the `Provider` 
   ```
 
 While Context API is useful, it doesn't mean that we should use it everywhere. The use case depends on the requirements of the app.
+
+## Fonts in React Native
+
+We can use custom fonts in our app. We can use the `expo-font` library to use custom fonts in our app.
+
+- Install the required package
+
+  ```sh
+  npx expo install expo-font
+  ```
+
+- Import the required module
+
+  ```jsx
+  import * as Font from 'expo-font';
+  ```
+
+- Load the font
+
+  ```jsx
+  const loadFont = async () => {
+    await Font.loadAsync({
+      'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
+    });
+  };
+  ```
+
+- Use the font in the app
+
+  ```jsx
+  <Text style={{ fontFamily: 'open-sans' }}>Hello</Text>
+  ```
+
+We can also use the `useFonts` hook to load fonts in our app.
+
+```jsx
+import { Stack } from 'expo-router';
+import { useCallback } from 'react';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+
+SplashScreen.preventAutoHideAsync();
+
+const Layout = () => {
+  const [fontsLoaded] = useFonts({
+    DMBold: require('../assets/fonts/DMSans-Bold.ttf'),
+    DMMedium: require('../assets/fonts/DMSans-Medium.ttf'),
+    DMRegular: require('../assets/fonts/DMSans-Regular.ttf'),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) return null;
+
+  return <Stack onLayout={onLayoutRootView} />;
+};
+
+export default Layout;
+```
