@@ -1,11 +1,17 @@
 ## What is React Native?
 
-- A framework for building native apps using React
-- Created by Facebook in 2015
-- Lets you create mobile apps for iOS and Android using JavaScript
-- Technically a Hybrid App but uses native mobile components
+React Native is a framework for building native mobile apps using JavaScript and React. It allows you to create a single codebase that can be used to build apps for both iOS and Android. React Native was created by Facebook in 2015 and is being used by Instagram, Uber, Tesla, Walmart, and more. It is one of the most popular frameworks for building mobile apps.
+
+#### Advantages
+
+- Cross-platform development (iOS and Android)
+- Hot Reloading (instantly see changes)
+- Strong community support (lots of packages)
+- Easy to learn (if you know React)
 
 ### Native vs Hybrid Apps
+
+React Native is technically a Hybrid App but it uses native mobile components to give a native feel to the app. It's not a web app running on mobile, it's a mobile app built using JavaScript and React.
 
 ##### Native
 
@@ -20,13 +26,52 @@
 - Cheaper to develop and maintain
 - Not as great user experience since we just create a web app that runs on mobile
 
-React Native is a hybrid app but uses native components. So we get the best of both worlds. React Native acts as a bridge between JavaScript and native platforms. It takes our JavaScript code and converts it to native code.
+With React Native, we get the best of both worlds. It acts as a bridge between JavaScript and native platforms. It takes our JavaScript code and converts it to native code.
+
+## React Native vs. React
+
+Instead of using HTML elements, you use React Native components.
+
+###### React
+
+```jsx
+import react from 'react';
+
+const App = () => {
+  return (
+    <div className="container">
+      <h1>Hello World</h1>
+    </div>
+  );
+};
+```
+
+###### React Native
+
+```jsx
+import react from 'react';
+import { View, Text } from 'react-native';
+
+const App = () => {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Hello World</Text>
+    </View>
+  );
+};
+```
+
+So instead of rendering HTML elements, you render Native mobile components.
 
 ## Expo
 
+- A tool like _create-react-app_/_Vite_ for React Native
+- Allows you to build React Native apps without having to install Xcode or Android Studio
 - External platform that helps us run and build React Native apps
 - Not compulsory but makes it easier to develop React Native apps
 - If not for expo, we would need to install Android Studio and Xcode to run our apps on simulators
+- No need to configure native build tools
+- Gives you access to native APIs (camera, navigation, push notifications, maps, etc.)
 
 ## Environment Setup
 
@@ -105,7 +150,7 @@ We can find out more about setting up these configurations files via their docum
 
 - Install the ESLint and Prettier extension in your code editor
 - Add the following code to the `settings.json` file if needed
-  ```jsxon
+  ```json
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
@@ -116,7 +161,7 @@ We can find out more about setting up these configurations files via their docum
 #### Script to Run ESLint
 
 - Open the `package.json` file and add the following script
-  ```jsxon
+  ```json
   "scripts": {
     "lint": "eslint ."
   }
@@ -142,15 +187,42 @@ React Native comes as a bridge between both the platforms. We can use `<Image>` 
 
 These are components that basically work like different elements in HTML.
 
-- `<View>`: A container that supports layout with flexbox, style, some touch handling, and accessibility controls. It can be nested inside another view and can have 0 to many children of any type.
-- `<Text>`: A component for displaying text. It supports nesting, styling, and touch handling.
-- `<Image>`: A component for displaying images. It supports resizing, cropping, and displaying multiple images.
-- `<ScrollView>`: A generic scrolling container that can contain multiple components and views. It supports both vertical and horizontal scrolling.
-- `<TextInput>`: A component for inputting text into the app via a keyboard. It has an `onChangeText` prop that takes a function to be called every time the text changed. It also has a `value` prop that can be used to set the value of the input.
+#### Text Component
 
-#### View
+- `<Text>` is the equivalent of `<p>` in HTML
+- `<Text>` is the only component that can render text
+- `<Text>` can be styled with the `style` prop
 
-Just like `<div>` in HTML and hence it's only visible when it has some content or styling.
+#### View Component
+
+- `<View>` is the equivalent of `<div>` in HTML
+- `<View>` is used to create layout structures for other components (rows, columns, etc.)
+- Has number of props to control its appearance and behavior
+- Uses flexbox layout by default
+
+#### Image Component
+
+- `<Image>` is the equivalent of `<img>` in HTML
+- `<Image>` is used to display images
+- Has a number of props to control its appearance and behavior
+
+#### ScrollView Component
+
+- `<ScrollView>` is the equivalent of `<div>` with `overflow: scroll` in HTML
+- `<ScrollView>` is used to create a scrollable view
+- It can contain multiple components and views
+- Supports both vertical and horizontal scrolling
+
+#### TextInput Component
+
+- `<TextInput>` is the equivalent of `<input>` in HTML
+- `<TextInput>` is used to create an input field
+- It has a number of props to control its appearance and behavior
+
+#### SafeAreaView Component
+
+- `<SafeAreaView>` is used to render content within the safe area boundaries of a device
+- It's used to avoid content from being hidden by the status bar, notches, rounded corners, etc.
 
 ## Creating Components
 
@@ -448,7 +520,7 @@ There's tons to learn about lists. Refer to the documentation for more informati
 
 > Note: There's no need to worry about performance if the list isn't very long. FlatList and SectionList are optimized for performance. FlatList only renders the items that are visible on the screen. It only rerenders when the data changes.
 
-## Icons in React Native
+## Icons
 
 There are a few ways to use icons in React Native. We are going to be using a library called `react-native-vector-icons` which comes pre-installed with Expo. However, it can also be installed separately.
 
@@ -535,6 +607,59 @@ const ComponentName = () => {
         <Text>Inside</Text>
       </ImageBackground>
     </SafeAreaView>
+  );
+};
+```
+
+## Buttons in React Native
+
+There are a few different ways to create buttons in React Native. We can use the `Button` component, the `TouchableOpacity` component, or the `TouchableWithoutFeedback` component.
+
+### The `Button` Component
+
+- A built-in component used to create a button
+- It's a simple button that can be used to perform an action when clicked
+
+```jsx
+import { Button } from 'react-native';
+
+const ComponentName = () => {
+  return (
+    <Button title="Press Me" onPress={() => console.log('Button Pressed')} />
+  );
+};
+```
+
+### The `TouchableOpacity` Component
+
+- A built-in component used to create a button
+- It's similar to the `Button` component but it's more customizable
+
+```jsx
+import { TouchableOpacity, Text } from 'react-native';
+
+const ComponentName = () => {
+  return (
+    <TouchableOpacity onPress={() => console.log('Button Pressed')}>
+      <Text>Press Me</Text>
+    </TouchableOpacity>
+  );
+};
+```
+
+### The `TouchableWithoutFeedback` Component
+
+- A built-in component used to create a button
+- It's similar to the `TouchableOpacity` component but it doesn't have any visual feedback when pressed which means that it doesn't change color when pressed
+
+```jsx
+import { TouchableWithoutFeedback, Text } from 'react-native';
+
+const ComponentName = () => {
+  return (
+    <TouchableWithoutFeedback onPress={() => console.log('Button Pressed')}>
+      <Text>Press Me</Text>
+    </TouchableWithoutFeedback>
   );
 };
 ```
@@ -1111,56 +1236,3 @@ To use the Context API, we need to create a context and then use the `Provider` 
   ```
 
 While Context API is useful, it doesn't mean that we should use it everywhere. The use case depends on the requirements of the app.
-
-## Buttons in React Native
-
-There are a few different ways to create buttons in React Native. We can use the `Button` component, the `TouchableOpacity` component, or the `TouchableWithoutFeedback` component.
-
-### The `Button` Component
-
-- A built-in component used to create a button
-- It's a simple button that can be used to perform an action when clicked
-
-```jsx
-import { Button } from 'react-native';
-
-const ComponentName = () => {
-  return (
-    <Button title="Press Me" onPress={() => console.log('Button Pressed')} />
-  );
-};
-```
-
-### The `TouchableOpacity` Component
-
-- A built-in component used to create a button
-- It's similar to the `Button` component but it's more customizable
-
-```jsx
-import { TouchableOpacity, Text } from 'react-native';
-
-const ComponentName = () => {
-  return (
-    <TouchableOpacity onPress={() => console.log('Button Pressed')}>
-      <Text>Press Me</Text>
-    </TouchableOpacity>
-  );
-};
-```
-
-### The `TouchableWithoutFeedback` Component
-
-- A built-in component used to create a button
-- It's similar to the `TouchableOpacity` component but it doesn't have any visual feedback when pressed which means that it doesn't change color when pressed
-
-```jsx
-import { TouchableWithoutFeedback, Text } from 'react-native';
-
-const ComponentName = () => {
-  return (
-    <TouchableWithoutFeedback onPress={() => console.log('Button Pressed')}>
-      <Text>Press Me</Text>
-    </TouchableWithoutFeedback>
-  );
-};
-```
