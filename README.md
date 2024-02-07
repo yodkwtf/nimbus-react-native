@@ -16,27 +16,27 @@ Nimbus is a simple weather application built with React Native, serving as a lea
 
 1. Clone the repository
 
-```bash
-git clone https://github.com/yodkwtf/nimbus-react-native.git
-```
+    ```bash
+    git clone https://github.com/yodkwtf/nimbus-react-native.git
+    ```
 
 2. Navigate to the project directory
 
-```bash
-cd nimbus-react-native
-```
+    ```bash
+    cd nimbus-react-native
+    ```
 
 3. Install dependencies
 
-```bash
-npm install
-```
+    ```bash
+    npm install
+    ```
 
 4. Start the application
 
-```bash
-npm start
-```
+    ```bash
+    npm start
+    ```
 
 5. Follow the instructions in the terminal to launch the app on your preferred device/emulator.
 
