@@ -1,3 +1,30 @@
+## Contents
+
+1. [What is React Native?](#what-is-react-native)
+2. [React Native vs. React](#react-native-vs-react)
+3. [Environment Setup](#environment-setup)
+4. [Developer Setup](#developer-setup)
+5. [Expo](#expo)
+6. [Native Components](#native-components)
+7. [Creating Components](#creating-components)
+8. [Styling in React Native](#styling)
+9. [Passing Multiple Styles](#passing-multiple-styles)
+10. [Layout Props](#layout-props)
+11. [Lists in React Native](#lists-in-react-native)
+12. [Icons](#icons)
+13. [Images](#images)
+14. [Buttons in React Native](#buttons-in-react-native)
+15. [Activity Indicator](#activity-indicator)
+16. [GeoLocation](#geolocation)
+17. [Props](#props)
+18. [Navigation in React Native](#navigation-in-react-native)
+19. [Passing Props to Tab Screens](#passing-props-to-tab-screens)
+20. [State](#state)
+21. [Data Fetching](#data-fetching)
+22. [Context API](#context-api)
+23. [Environment Variables](#environment-variables)
+24. [Code and Folder Structure](#code-and-folder-structure)
+
 ## What is React Native?
 
 React Native is a framework for building native mobile apps using JavaScript and React. It allows you to create a single codebase that can be used to build apps for both iOS and Android. React Native was created by Facebook in 2015 and is being used by Instagram, Uber, Tesla, Walmart, and more. It is one of the most popular frameworks for building mobile apps.
