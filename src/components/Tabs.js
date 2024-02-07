@@ -30,7 +30,7 @@ const Tabs = ({ weather }) => {
       }}
     >
       <Tab.Screen
-        name="Current"
+        name="Nimbus"
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
@@ -45,7 +45,7 @@ const Tabs = ({ weather }) => {
       </Tab.Screen>
 
       <Tab.Screen
-        name="Upcoming"
+        name="Nimbus"
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
@@ -60,7 +60,7 @@ const Tabs = ({ weather }) => {
       </Tab.Screen>
 
       <Tab.Screen
-        name="City"
+        name="Nimbus"
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather name="home" size={25} color={focused ? 'white' : 'gray'} />
